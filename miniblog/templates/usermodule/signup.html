@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"/>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+
+<style>
+    body{
+    background-image: url("/media/loginbgd.jpeg");
+    background-color: rgb(146,146,83);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.regcard{
+    background-color: rgba(230,230,183,0.95);
+    width: 500px;
+    padding: 35px;
+    border-radius: 25px;
+    box-shadow: 0px 10px 25px rgba(0,0,0,0.25);
+    margin: 30px 0;
+}
+
+.register-title{
+    text-align: center;
+    color: rgb(90,90,30);
+    font-weight: bold;
+    margin-bottom: 25px;
+}
+
+.form-label{
+    color: rgb(90,90,30);
+    font-weight: 600;
+}
+
+.form-control{
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.form-control:focus{
+    border-color: rgb(147,147,61);
+    box-shadow: 0px 0px 8px rgba(147,147,61,0.4);
+}
+
+.reg-btn{
+    background-color: rgb(90,90,30);
+    color: white;
+    border: none;
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.reg-btn:hover{
+    background-color: rgb(70,70,20);
+    color: white;
+    transform: translateY(-2px);
+}
+
+.login-link{
+    text-align: center;
+    margin-top: 20px;
+}
+
+.login-link a{
+    color: rgb(90,90,30);
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.login-link a:hover{
+    text-decoration: underline;
+}
+</style>
+<body class="d-flex justify-content-center align-items-center min-vh-100">
+
+<div class="regcard">
+
+    <h2 class="register-title">
+        📝 Register
+    </h2>
+
+    <form action="/blogApp/post_register/"
+          enctype="multipart/form-data"
+          method="post">
+
+        {% csrf_token %}
+
+        <div class="mb-3">
+            <label class="form-label">Full Name</label>
+            <input type="text"
+       name="fullname"
+       class="form-control"
+       pattern="^[A-Za-z ]{3,50}$"
+       title="Enter only letters and spaces (minimum 3 characters)"
+       required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Email</label>
+            <input type="email"
+                   name="email"
+                   class="form-control"
+                   required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Phone Number</label>
+            <input type="text"
+       name="phone"
+       class="form-control"
+       pattern="^[0-9]{10}$"
+       maxlength="10"
+       title="Enter a valid 10-digit phone number"
+       required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Profile Picture</label>
+            <input type="file" name="biopic" class="form-control" accept=".jpg,.jpeg,.png" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Password</label>
+            <input type="password" name="password" class="form-control" minlength="6" title="Password must contain at least 6 characters" required>
+        </div>
+
+        <button type="submit"
+                class="btn reg-btn">
+            REGISTER
+        </button>
+
+        <div class="login-link">
+            Already have an account?
+            <a href="/blogApp/get_login/">
+                Login Here
+            </a>
+        </div>
+
+    </form>
+
+</div>
+
+</body>
+</html>
